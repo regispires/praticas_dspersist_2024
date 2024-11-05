@@ -1,5 +1,3 @@
-import sys
-
 linha = input('digite algo: ')
 while linha:
     print(linha)  
