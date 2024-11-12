@@ -4,5 +4,3 @@ with open("arquivo.txt", "r") as file:
     # doc = file.readlines()
 print(doc)
 print(type(doc))
-
-

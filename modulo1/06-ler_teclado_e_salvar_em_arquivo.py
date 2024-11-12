@@ -1,5 +1,5 @@
 with open("arquivo.txt", "w") as file:
-    linha = input('digite algo: ')
+    linha = input("digite algo: ")
     while linha:
-        file.write(linha + '\n')
-        linha = input('digite algo: ')
+        file.write(linha + "\n")
+        linha = input("digite algo: ")

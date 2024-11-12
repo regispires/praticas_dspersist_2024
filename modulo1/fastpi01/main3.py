@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
 from models import Item
 
 app = FastAPI()

@@ -15,7 +15,9 @@ with open("private_key.pem", "wb") as private_file:
         private_key.private_bytes(
             encoding=serialization.Encoding.PEM,
             format=serialization.PrivateFormat.PKCS8,
-            encryption_algorithm=serialization.BestAvailableEncryption(b"minha_senha_forte")
+            encryption_algorithm=serialization.BestAvailableEncryption(
+                b"minha_senha_forte"
+            ),
         )
     )
 
@@ -24,7 +26,7 @@ with open("public_key.pem", "wb") as public_file:
     public_file.write(
         public_key.public_bytes(
             encoding=serialization.Encoding.PEM,
-            format=serialization.PublicFormat.SubjectPublicKeyInfo
+            format=serialization.PublicFormat.SubjectPublicKeyInfo,
         )
     )
 

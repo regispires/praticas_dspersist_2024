@@ -1,4 +1,4 @@
-linha = input('digite algo: ')
+linha = input("digite algo: ")
 while linha:
-    print(linha)  
-    linha = input('digite algo: ')
+    print(linha)
+    linha = input("digite algo: ")

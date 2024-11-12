@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
 from models import Item
 import pickle
 
@@ -11,8 +10,10 @@ itens_file = "itens_app.pkl"
 try:
     with open(itens_file, "rb") as f:
         itens: list[Item] = pickle.load(f)
-except:
+except Exception as e:
+    print(e)
     itens: list[Item] = []
+
 
 def persistir_dados():
     with open(itens_file, "wb") as f:
