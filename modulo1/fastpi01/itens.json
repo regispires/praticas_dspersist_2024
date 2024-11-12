@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "nome": "Produto A",
+        "valor": 29.99,
+        "is_oferta": true
+    },
+    {
+        "id": 2,
+        "nome": "Produto B",
+        "valor": 15.49,
+        "is_oferta": false
+    },
+    {
+        "id": 3,
+        "nome": "Produto C",
+        "valor": 9.99,
+        "is_oferta": null
+    }
+]
