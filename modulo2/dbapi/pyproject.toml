@@ -1,0 +1,9 @@
+[project]
+name = "exemplo-dbapi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dbapi>=0.0.13",
+]
