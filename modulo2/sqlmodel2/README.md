@@ -4,7 +4,7 @@
 
 ```mermaid
 classDiagram
-    direction RL
+    direction LR
     class User {
         id: int
         name: str
@@ -25,7 +25,7 @@ classDiagram
     }
 
     User "1" -- "*" Post
-    Post "1" -- "*" Comment
+    Post "1" *-- "*" Comment
     User "1" -- "*" Comment
     Post "*" -- "*" Tag
 ```

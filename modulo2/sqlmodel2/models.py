@@ -38,3 +38,4 @@ class Tag(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     name: str
     posts: list[Post] = Relationship(back_populates="tags", link_model=PostTag)
+

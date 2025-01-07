@@ -1,7 +1,8 @@
 from fastapi import APIRouter
 from fastapi import HTTPException, Depends
 from sqlmodel import Session, select
-from models import Post, Comment, Tag, PostTag
+from sqlalchemy.orm import joinedload
+from models import Post, Comment, Tag, PostTag, User
 from database import get_session
 from datetime import datetime
 
@@ -24,7 +25,13 @@ def read_posts(session: Session = Depends(get_session)):
 
 @router.get("/{post_id}", response_model=Post)
 def read_post(post_id: int, session: Session = Depends(get_session)):
-    post = session.get(Post, post_id)
+    statement = select(Post).options(joinedload(User.posts)).where(Post.id == post_id)
+    post = session.exec(statement).first()
+#    post = session.get(Post, post_id)
+#    post.user = post.user
+#    post.comments = post.comments
+#    post.tags = post.tags
+    print(post)
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
     return post
