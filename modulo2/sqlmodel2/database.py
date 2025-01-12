@@ -1,4 +1,6 @@
+import sqlite3
 from sqlmodel import create_engine, Session, SQLModel
+from sqlalchemy import event, Engine
 from dotenv import load_dotenv
 import logging
 import os
@@ -20,3 +22,10 @@ def create_db_and_tables() -> None:
 
 def get_session() -> Session:
     return Session(engine)
+
+@event.listens_for(Engine, "connect")
+def set_sqlite_pragma(dbapi_connection, connection_record):
+    if type(dbapi_connection) is sqlite3.Connection:  # somente para o SQLite
+       cursor = dbapi_connection.cursor()
+       cursor.execute("PRAGMA foreign_keys=ON")
+       cursor.close()

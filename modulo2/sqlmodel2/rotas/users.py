@@ -1,7 +1,6 @@
-from fastapi import APIRouter
-from fastapi import HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Query
 from sqlmodel import Session, select
-from models import User
+from modelos.user import User
 from database import get_session
 
 router = APIRouter(
@@ -18,8 +17,9 @@ def create_user(user: User, session: Session = Depends(get_session)):
     return user
 
 @router.get("/", response_model=list[User])
-def read_users(session: Session = Depends(get_session)):
-    return session.exec(select(User)).all()
+def read_users(offset: int = 0, limit: int = Query(default=10, le=100), 
+               session: Session = Depends(get_session)):
+    return session.exec(select(User).offset(offset).limit(limit)).all()
 
 @router.get("/{user_id}", response_model=User)
 def read_user(user_id: int, session: Session = Depends(get_session)):

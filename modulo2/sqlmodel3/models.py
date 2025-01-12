@@ -39,3 +39,10 @@ class Tag(SQLModel, table=True):
     name: str
     posts: list[Post] = Relationship(back_populates="tags", link_model=PostTag)
 
+class PostWithUser(Post):
+    user: User | None
+
+#class PostWithUserCommentsTags(Post):
+#    user: User | None
+    #comments: list[Comment] = []
+    #tags: list[Tag] = []
