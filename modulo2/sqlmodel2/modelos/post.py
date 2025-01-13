@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from sqlmodel import SQLModel, Field, Relationship
 from .user import User, UserBase
-from .comment import Comment, CommentBase
+from .comment import Comment, CommentBaseWithUser
 from .tag import Tag
 
 class PostTag(SQLModel, table=True):
@@ -23,5 +23,5 @@ class Post(PostBase, table=True):
 
 class PostBaseWithUserCommentsTags(PostBase):
     user: UserBase | None
-    comments: list[CommentBase] = []
-    tags: list[Tag] = []
+    comments: list[CommentBaseWithUser] = None
+    tags: list[Tag] = None
