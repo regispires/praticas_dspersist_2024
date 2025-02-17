@@ -1,0 +1,11 @@
+[project]
+name = "mongodb"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "motor>=3.7.0",
+    "pymongo[srv]>=4.11",
+    "python-dotenv>=1.0.1",
+]
